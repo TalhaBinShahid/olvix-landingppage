@@ -99,7 +99,10 @@ export function LinesReveal({
 
   if (reduce) return <div className={className}>{children}</div>;
   return (
-    <div ref={ref} className={`overflow-hidden ${className ?? ""}`}>
+    <div
+      ref={ref}
+      className={`overflow-hidden pb-[0.18em] -mb-[0.18em] ${className ?? ""}`}
+    >
       <motion.div
         initial={{ y: "105%", opacity: 0 }}
         animate={inView ? { y: "0%", opacity: 1 } : { y: "105%", opacity: 0 }}
