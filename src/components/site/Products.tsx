@@ -41,9 +41,7 @@ function StackCard({ p, i, total }: { p: (typeof products)[number]; i: number; t
       <motion.div style={reduce ? undefined : { scale, opacity, rotate }}>
         <SpotlightCard
           as="article"
-          className={`glow-border grid gap-6 overflow-hidden rounded-2xl bg-card p-6 md:grid-cols-2 md:items-center md:p-8 ${
-            i % 2 === 1 ? "md:[&_.media]:order-2" : ""
-          }`}
+          className="glow-border overflow-hidden rounded-2xl bg-card p-6 md:p-8"
         >
           <div className="grid gap-6 md:grid-cols-2 md:items-center">
             <div className={`media ${i % 2 === 1 ? "md:order-2" : ""}`}>{media}</div>
