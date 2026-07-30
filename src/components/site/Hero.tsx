@@ -76,13 +76,12 @@ export function Hero() {
           </motion.span>
 
           <h1 className="mt-6 text-4xl font-semibold leading-[1.05] sm:text-5xl lg:text-6xl">
+            <WordsReveal text="We build AI products & platforms —" delay={0.15} />{" "}
             <WordsReveal
-              text="We build AI products & platforms —"
-              delay={0.15}
-            />{" "}
-            <span className="text-gradient">
-              <WordsReveal text="not just promises." delay={0.5} />
-            </span>
+              text="not just promises."
+              delay={0.55}
+              highlight={["not", "just", "promises."]}
+            />
           </h1>
 
           <motion.p
