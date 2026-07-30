@@ -48,17 +48,17 @@ function NetworkGraph() {
   return (
     <group ref={group} scale={0.9}>
       <lineSegments geometry={lineGeometry}>
-        <lineBasicMaterial color="#7C5CFF" transparent opacity={0.35} />
+        <lineBasicMaterial color="#e85d3a" transparent opacity={0.35} />
       </lineSegments>
       {positions.map((p, i) => (
         <mesh key={i} position={p}>
           <icosahedronGeometry args={[i % 6 === 0 ? 0.075 : 0.042, 0]} />
-          <meshBasicMaterial color={i % 6 === 0 ? "#22D3EE" : "#A78BFA"} />
+          <meshBasicMaterial color={i % 6 === 0 ? "#ff8a65" : "#c9a84c"} />
         </mesh>
       ))}
       <mesh>
         <icosahedronGeometry args={[0.9, 1]} />
-        <meshBasicMaterial color="#7C5CFF" wireframe transparent opacity={0.22} />
+        <meshBasicMaterial color="#e85d3a" wireframe transparent opacity={0.22} />
       </mesh>
     </group>
   );
