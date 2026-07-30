@@ -1,47 +1,35 @@
-import { motion, useReducedMotion } from "framer-motion";
-import type { ReactNode } from "react";
+import { LinesReveal, Reveal } from "./motion";
 
-export function Reveal({
-  children,
-  delay = 0,
-  className,
-}: {
-  children: ReactNode;
-  delay?: number;
-  className?: string;
-}) {
-  const reduce = useReducedMotion();
-  if (reduce) return <div className={className}>{children}</div>;
-
-  return (
-    <motion.div
-      className={className}
-      initial={{ opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] }}
-    >
-      {children}
-    </motion.div>
-  );
-}
+export { Reveal };
 
 export function SectionHeading({
   eyebrow,
   title,
   subtitle,
+  align = "left",
 }: {
   eyebrow: string;
   title: string;
   subtitle?: string;
+  align?: "left" | "center";
 }) {
   return (
-    <Reveal className="mb-12 max-w-2xl">
-      <span className="tag-mono">{eyebrow}</span>
-      <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">{title}</h2>
+    <div
+      className={`mb-14 max-w-2xl ${align === "center" ? "mx-auto text-center" : ""}`}
+    >
+      <Reveal direction="blur">
+        <span className="tag-mono shimmer-tag">{eyebrow}</span>
+      </Reveal>
+      <LinesReveal className="mt-4" delay={0.05}>
+        <h2 className="text-3xl font-semibold sm:text-4xl lg:text-[2.75rem] lg:leading-[1.1]">
+          {title}
+        </h2>
+      </LinesReveal>
       {subtitle ? (
-        <p className="mt-3 text-base text-muted-foreground">{subtitle}</p>
+        <Reveal delay={0.15} className="mt-4">
+          <p className="text-base text-muted-foreground">{subtitle}</p>
+        </Reveal>
       ) : null}
-    </Reveal>
+    </div>
   );
 }
