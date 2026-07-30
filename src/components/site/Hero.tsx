@@ -23,13 +23,17 @@ export function Hero() {
       <div className="orb -left-24 top-10 h-[26rem] w-[26rem] bg-primary" aria-hidden />
       <div className="orb -right-20 bottom-0 h-[22rem] w-[22rem] bg-accent opacity-30" aria-hidden />
 
-      <div className="absolute inset-0" aria-hidden>
+      <div
+        className="pointer-events-none absolute inset-y-0 right-0 left-0 opacity-70 lg:left-[42%] lg:opacity-100"
+        aria-hidden
+      >
         <ClientOnly fallback={null}>
           <Suspense fallback={null}>
             <HeroScene />
           </Suspense>
         </ClientOnly>
       </div>
+
 
       <div className="relative mx-auto grid w-full max-w-6xl gap-10 px-5 pb-20 pt-32 lg:grid-cols-[1.1fr_0.9fr]">
         <div>
