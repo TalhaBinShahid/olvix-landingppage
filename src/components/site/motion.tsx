@@ -92,13 +92,16 @@ export function LinesReveal({
   delay?: number;
 }) {
   const reduce = useReducedMotion();
+  const ref = useRef<HTMLDivElement>(null);
+  // Observe the mask (not the translated child, which its own clip hides).
+  const inView = useInView(ref, { once: true, margin: "-60px" });
+
   if (reduce) return <div className={className}>{children}</div>;
   return (
-    <div className={`overflow-hidden ${className ?? ""}`}>
+    <div ref={ref} className={`overflow-hidden ${className ?? ""}`}>
       <motion.div
         initial={{ y: "105%", opacity: 0 }}
-        whileInView={{ y: "0%", opacity: 1 }}
-        viewport={{ once: true, margin: "-80px" }}
+        animate={inView ? { y: "0%", opacity: 1 } : { y: "105%", opacity: 0 }}
         transition={{ duration: 0.9, delay, ease: EASE }}
       >
         {children}
@@ -106,6 +109,7 @@ export function LinesReveal({
     </div>
   );
 }
+
 
 /* --------------------------------------------------------------- reveal fx */
 
