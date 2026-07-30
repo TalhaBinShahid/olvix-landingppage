@@ -98,7 +98,7 @@ export function LinesReveal({
       <motion.div
         initial={{ y: "105%", opacity: 0 }}
         whileInView={{ y: "0%", opacity: 1 }}
-        viewport={{ once: true, margin: "-15%" }}
+        viewport={{ once: true, margin: "-80px" }}
         transition={{ duration: 0.9, delay, ease: EASE }}
       >
         {children}
@@ -140,7 +140,7 @@ export function Reveal({
       className={className}
       initial={initial}
       whileInView={{ opacity: 1, x: 0, y: 0, scale: 1, filter: "blur(0px)" }}
-      viewport={{ once: true, margin: "-12%" }}
+      viewport={{ once: true, margin: "-60px" }}
       transition={{ duration: 0.85, delay, ease: EASE }}
     >
       {children}
@@ -165,7 +165,7 @@ export function Stagger({
       className={className}
       initial="hidden"
       whileInView="show"
-      viewport={{ once: true, margin: "-10%" }}
+      viewport={{ once: true, margin: "-60px" }}
       variants={{ show: { transition: { staggerChildren: gap } } }}
     >
       {children}
