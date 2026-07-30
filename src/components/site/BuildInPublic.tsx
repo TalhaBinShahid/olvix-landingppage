@@ -1,5 +1,6 @@
 import { posts } from "@/data/site";
-import { Reveal, SectionHeading } from "./Reveal";
+import { SectionHeading } from "./Reveal";
+import { SpotlightCard, Stagger, StaggerItem } from "./motion";
 
 export function BuildInPublic() {
   return (
@@ -11,21 +12,30 @@ export function BuildInPublic() {
           subtitle="Hackathon logs, engineering notes, and posts from the team."
         />
 
-        <div className="grid gap-6 md:grid-cols-3">
-          {posts.map((p, i) => (
-            <Reveal key={p.title} delay={i * 0.07}>
-              <a
-                href="#"
-                className="glow-border flex h-full flex-col rounded-2xl bg-card p-6 transition-all duration-300"
-              >
-                <span className="tag-mono self-start">{p.tag}</span>
-                <h3 className="mt-4 text-lg font-semibold">{p.title}</h3>
-                <p className="mt-2 flex-1 text-sm text-muted-foreground">{p.excerpt}</p>
-                <span className="mt-6 text-xs text-muted-foreground">{p.date}</span>
-              </a>
-            </Reveal>
+        <Stagger className="grid gap-6 md:grid-cols-3" gap={0.1}>
+          {posts.map((p) => (
+            <StaggerItem key={p.title} className="h-full">
+              <SpotlightCard className="h-full">
+                <a
+                  href="#"
+                  className="glow-border group flex h-full flex-col rounded-2xl bg-card p-6"
+                >
+                  <span className="tag-mono self-start">{p.tag}</span>
+                  <h3 className="mt-4 text-lg font-semibold transition-colors duration-300 group-hover:text-primary">
+                    {p.title}
+                  </h3>
+                  <p className="mt-2 flex-1 text-sm text-muted-foreground">{p.excerpt}</p>
+                  <span className="mt-6 flex items-center justify-between text-xs text-muted-foreground">
+                    {p.date}
+                    <span className="translate-x-0 text-primary opacity-0 transition-all duration-300 group-hover:translate-x-1 group-hover:opacity-100">
+                      →
+                    </span>
+                  </span>
+                </a>
+              </SpotlightCard>
+            </StaggerItem>
           ))}
-        </div>
+        </Stagger>
       </div>
     </section>
   );

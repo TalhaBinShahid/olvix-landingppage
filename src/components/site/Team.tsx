@@ -1,5 +1,7 @@
+import { motion } from "framer-motion";
 import { team } from "@/data/site";
-import { Reveal, SectionHeading } from "./Reveal";
+import { SectionHeading } from "./Reveal";
+import { SpotlightCard, Stagger, StaggerItem } from "./motion";
 
 export function Team() {
   return (
@@ -11,35 +13,47 @@ export function Team() {
           subtitle="Small senior team — the people you meet are the people who build."
         />
 
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {team.map((m, i) => (
-            <Reveal key={m.name} delay={i * 0.06}>
-              <article className="glow-border h-full rounded-2xl bg-card p-6 transition-all duration-300">
-                <div
-                  className="dot-bg mb-5 aspect-square w-full rounded-xl border border-border bg-surface"
-                  aria-hidden
-                />
-                <h3 className="text-base font-semibold">{m.name}</h3>
-                <p className="mt-1 text-sm text-muted-foreground">{m.role}</p>
-                <div className="mt-4 flex flex-wrap gap-2">
-                  {m.tags.map((t) => (
-                    <span key={t} className="tag-mono">
-                      {t}
-                    </span>
-                  ))}
+        <Stagger className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4" gap={0.09}>
+          {team.map((m) => (
+            <StaggerItem key={m.name} className="h-full">
+              <SpotlightCard
+                as="article"
+                className="glow-border h-full overflow-hidden rounded-2xl bg-card p-6"
+              >
+                <div>
+                  <motion.div
+                    className="dot-bg relative mb-5 aspect-square w-full overflow-hidden rounded-xl border border-border bg-surface"
+                    whileHover={{ scale: 1.03 }}
+                    transition={{ type: "spring", stiffness: 220, damping: 18 }}
+                    aria-hidden
+                  >
+                    <span className="sheen" />
+                  </motion.div>
+                  <h3 className="text-base font-semibold">{m.name}</h3>
+                  <p className="mt-1 text-sm text-muted-foreground">{m.role}</p>
+                  <div className="mt-4 flex flex-wrap gap-2">
+                    {m.tags.map((t) => (
+                      <span
+                        key={t}
+                        className="tag-mono transition-colors duration-300 hover:border-primary hover:text-primary"
+                      >
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="mt-5 flex gap-4 text-sm">
+                    <a href="#" className="link-arrow">
+                      LinkedIn
+                    </a>
+                    <a href="#" className="link-arrow">
+                      X
+                    </a>
+                  </div>
                 </div>
-                <div className="mt-5 flex gap-4 text-sm">
-                  <a href="#" className="text-primary hover:text-accent">
-                    LinkedIn
-                  </a>
-                  <a href="#" className="text-primary hover:text-accent">
-                    X
-                  </a>
-                </div>
-              </article>
-            </Reveal>
+              </SpotlightCard>
+            </StaggerItem>
           ))}
-        </div>
+        </Stagger>
       </div>
     </section>
   );

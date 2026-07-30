@@ -1,22 +1,38 @@
-import { Reveal } from "./Reveal";
+import { useRef } from "react";
+import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import { LinesReveal, Magnetic, Reveal } from "./motion";
 
 export function Contact() {
+  const reduce = useReducedMotion();
+  const ref = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
+  const orbY = useTransform(scrollYProgress, [0, 1], [-80, 80]);
+  const orbScale = useTransform(scrollYProgress, [0, 0.5, 1], [0.7, 1.25, 0.8]);
+
   return (
-    <section id="contact" className="relative overflow-hidden grid-bg">
-      <div className="orb left-1/2 top-0 h-[24rem] w-[24rem] -translate-x-1/2 bg-primary" aria-hidden />
+    <section id="contact" ref={ref} className="relative overflow-hidden grid-bg">
+      <motion.div
+        className="orb left-1/2 top-0 h-[24rem] w-[24rem] -translate-x-1/2 bg-primary"
+        style={reduce ? undefined : { y: orbY, scale: orbScale }}
+        aria-hidden
+      />
       <div className="section-shell relative text-center">
-        <Reveal>
-          <span className="tag-mono">Contact</span>
-          <h2 className="mx-auto mt-4 max-w-2xl text-3xl font-semibold sm:text-4xl">
+        <Reveal direction="blur">
+          <span className="tag-mono shimmer-tag">Contact</span>
+        </Reveal>
+        <LinesReveal className="mx-auto mt-4 max-w-2xl">
+          <h2 className="text-3xl font-semibold sm:text-4xl lg:text-5xl">
             Tell us what you&apos;re building.
           </h2>
-          <p className="mx-auto mt-3 max-w-xl text-muted-foreground">
+        </LinesReveal>
+        <Reveal delay={0.12}>
+          <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
             Book a 30-minute call and we&apos;ll tell you honestly whether AI is the
             right answer — and what it would take to ship.
           </p>
         </Reveal>
 
-        <Reveal delay={0.1}>
+        <Reveal delay={0.2} direction="scale">
           <div className="mx-auto mt-10 max-w-3xl overflow-hidden rounded-2xl border border-border bg-card">
             <iframe
               title="Book a call with OlvixAI"
@@ -27,9 +43,11 @@ export function Contact() {
           </div>
           <p className="mt-6 text-sm text-muted-foreground">
             Scheduler not loading?{" "}
-            <a href="mailto:hello@olvix.ai" className="text-primary hover:text-accent">
-              hello@olvix.ai
-            </a>
+            <Magnetic strength={0.2}>
+              <a href="mailto:hello@olvix.ai" className="link-arrow">
+                hello@olvix.ai
+              </a>
+            </Magnetic>
           </p>
         </Reveal>
       </div>
