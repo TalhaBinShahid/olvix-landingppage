@@ -1,5 +1,6 @@
 import {
   motion,
+  useInView,
   useMotionTemplate,
   useMotionValue,
   useReducedMotion,
