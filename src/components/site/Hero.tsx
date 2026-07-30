@@ -24,7 +24,7 @@ export function Hero() {
       <div className="orb -right-20 bottom-0 h-[22rem] w-[22rem] bg-accent opacity-30" aria-hidden />
 
       <div
-        className="pointer-events-none absolute inset-y-0 right-0 left-0 opacity-70 lg:left-[42%] lg:opacity-100"
+        className="pointer-events-none absolute inset-y-0 left-0 right-0 opacity-40 lg:left-[42%] lg:opacity-100 [&>canvas]:!relative"
         aria-hidden
       >
         <ClientOnly fallback={null}>
