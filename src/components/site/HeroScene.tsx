@@ -46,7 +46,7 @@ function NetworkGraph() {
   });
 
   return (
-    <group ref={group}>
+    <group ref={group} scale={0.9}>
       <lineSegments geometry={lineGeometry}>
         <lineBasicMaterial color="#7C5CFF" transparent opacity={0.35} />
       </lineSegments>
@@ -81,7 +81,7 @@ export default function HeroScene() {
       className="!absolute inset-0"
       dpr={[1, 1.6]}
       gl={{ antialias: false, powerPreference: "low-power" }}
-      camera={{ position: [0, 0, 7], fov: 50 }}
+      camera={{ position: [-2.4, 0, 8], fov: 50 }}
     >
       <NetworkGraph />
     </Canvas>

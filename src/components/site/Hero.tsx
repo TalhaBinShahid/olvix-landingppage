@@ -35,6 +35,11 @@ export function Hero() {
       </div>
 
 
+      <div
+        className="pointer-events-none absolute inset-y-0 left-0 hidden w-3/5 bg-gradient-to-r from-background via-background/85 to-transparent lg:block"
+        aria-hidden
+      />
+
       <div className="relative mx-auto grid w-full max-w-6xl gap-10 px-5 pb-20 pt-32 lg:grid-cols-[1.1fr_0.9fr]">
         <div>
           <motion.span className="tag-mono" {...rise(0)}>
