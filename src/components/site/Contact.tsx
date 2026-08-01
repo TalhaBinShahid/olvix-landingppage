@@ -44,8 +44,8 @@ export function Contact() {
           <p className="mt-6 text-sm text-muted-foreground">
             Scheduler not loading?{" "}
             <Magnetic strength={0.2}>
-              <a href="mailto:hello@olvix.ai" className="link-arrow">
-                hello@olvix.ai
+              <a href="mailto:email@olvix.io" className="link-arrow">
+                email@olvix.io
               </a>
             </Magnetic>
           </p>

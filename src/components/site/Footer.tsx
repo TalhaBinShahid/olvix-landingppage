@@ -5,7 +5,7 @@ const navLinks = [
   { href: "#services", label: "Services" },
   { href: "#team", label: "Team" },
   { href: "#blog", label: "Build in public" },
-  { href: "mailto:hello@olvix.ai", label: "Email" },
+  { href: "mailto:email@olvix.io", label: "Email" },
 ];
 
 export function Footer() {
