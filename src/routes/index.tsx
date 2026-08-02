@@ -5,15 +5,13 @@ import { ProofBar } from "@/components/site/ProofBar";
 import { Products } from "@/components/site/Products";
 import { Services } from "@/components/site/Services";
 import { Process } from "@/components/site/Process";
-import { Team } from "@/components/site/Team";
 import { CaseStudies } from "@/components/site/CaseStudies";
-import { BuildInPublic } from "@/components/site/BuildInPublic";
 import { Contact } from "@/components/site/Contact";
 import { Footer } from "@/components/site/Footer";
 
-const title = "OlvixAI — AI products, platforms & voice agents, shipped";
+const title = "Olvix — AI products, platforms & voice agents";
 const description =
-  "OlvixAI is an engineering studio shipping AI products: voice agents, ML automation, and LLM/RAG apps. Fixed-price sprints, production-ready builds.";
+  "Olvix is an engineering studio shipping AI products: voice agents, ML automation, and LLM/RAG apps. Fixed-price sprints, production-ready builds.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -39,9 +37,7 @@ function Index() {
         <Products />
         <Services />
         <Process />
-        <Team />
         <CaseStudies />
-        <BuildInPublic />
         <Contact />
       </main>
       <Footer />

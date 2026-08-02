@@ -1,7 +1,8 @@
 import { Suspense, lazy, useRef } from "react";
 import { motion, useReducedMotion, useScroll, useSpring, useTransform } from "framer-motion";
-import { ClientOnly } from "@tanstack/react-router";
+import { ClientOnly, Link } from "@tanstack/react-router";
 import { Magnetic, WordsReveal } from "./motion";
+import { BOOKING_PATH } from "@/lib/calendly";
 
 const HeroScene = lazy(() => import("./HeroScene"));
 
@@ -99,9 +100,9 @@ export function Hero() {
               </a>
             </Magnetic>
             <Magnetic strength={0.25}>
-              <a href="#contact" className="btn-ghost">
+              <Link to={BOOKING_PATH} className="btn-ghost">
                 Book a Call
-              </a>
+              </Link>
             </Magnetic>
           </motion.div>
         </div>

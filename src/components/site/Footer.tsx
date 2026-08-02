@@ -3,8 +3,7 @@ import { Reveal } from "./motion";
 const navLinks = [
   { href: "#products", label: "Work" },
   { href: "#services", label: "Services" },
-  { href: "#team", label: "Team" },
-  { href: "#blog", label: "Build in public" },
+  { href: "#cases", label: "Outcomes" },
   { href: "mailto:email@olvix.io", label: "Email" },
 ];
 
@@ -14,11 +13,8 @@ export function Footer() {
       <Reveal direction="blur">
         <div className="mx-auto flex max-w-6xl flex-col gap-6 px-5 py-12 md:flex-row md:items-center md:justify-between">
           <div>
-            <a href="#top" className="group font-display text-lg font-semibold">
+            <a href="#top" className="font-display text-lg font-semibold">
               Olvix
-              <span className="text-primary transition-all duration-300 group-hover:tracking-widest">
-                AI
-              </span>
             </a>
             <p className="mt-2 max-w-sm text-sm text-muted-foreground">
               An engineering studio building AI products, platforms, and agents.
@@ -34,7 +30,7 @@ export function Footer() {
         </div>
       </Reveal>
       <div className="border-t border-border py-5 text-center text-xs text-muted-foreground">
-        © {new Date().getFullYear()} OlvixAI. All rights reserved.
+        © {new Date().getFullYear()} Olvix. All rights reserved.
       </div>
     </footer>
   );

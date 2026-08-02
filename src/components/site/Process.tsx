@@ -87,17 +87,19 @@ function ProcessCard({
       style={{ opacity }}
       className="glow-border relative w-[78vw] shrink-0 rounded-2xl bg-card p-8 sm:w-[52vw] lg:w-[34vw]"
     >
-      <motion.div
-        className="flex h-14 w-14 items-center justify-center rounded-xl border border-border bg-surface text-primary"
-        whileHover={{ rotate: 8, scale: 1.08 }}
-        transition={{ type: "spring", stiffness: 260, damping: 16 }}
-      >
-        <Icon className="h-6 w-6" aria-hidden />
-      </motion.div>
-      <span className="tag-mono mt-5 inline-block">{s.step}</span>
-      <h3 className="mt-3 text-2xl font-semibold">{s.title}</h3>
-      <p className="mt-3 text-sm text-muted-foreground">{s.body}</p>
-      <span className="pointer-events-none absolute bottom-4 right-6 font-display text-6xl font-semibold text-foreground/5">
+      <div className="relative z-10 pb-14 pr-16">
+        <motion.div
+          className="flex h-14 w-14 items-center justify-center rounded-xl border border-border bg-surface text-primary"
+          whileHover={{ rotate: 8, scale: 1.08 }}
+          transition={{ type: "spring", stiffness: 260, damping: 16 }}
+        >
+          <Icon className="h-6 w-6" aria-hidden />
+        </motion.div>
+        <span className="tag-mono mt-5 inline-block">{s.step}</span>
+        <h3 className="mt-3 text-2xl font-semibold">{s.title}</h3>
+        <p className="mt-3 text-sm text-muted-foreground">{s.body}</p>
+      </div>
+      <span className="pointer-events-none absolute bottom-4 right-6 z-0 select-none font-display text-6xl font-semibold text-foreground/5">
         {String(i + 1).padStart(2, "0")}
       </span>
     </motion.article>

@@ -1,4 +1,6 @@
+import { Link } from "@tanstack/react-router";
 import { services } from "@/data/site";
+import { BOOKING_PATH } from "@/lib/calendly";
 import { SectionHeading } from "./Reveal";
 import { Stagger, StaggerItem, SpotlightCard, Magnetic } from "./motion";
 
@@ -45,9 +47,9 @@ export function Services() {
                     ))}
                   </ul>
                   <Magnetic strength={0.18} className="mt-7 w-full">
-                    <a href="#contact" className="btn-ghost w-full justify-center">
+                    <Link to={BOOKING_PATH} className="btn-ghost w-full justify-center">
                       Start a conversation
-                    </a>
+                    </Link>
                   </Magnetic>
                 </div>
               </SpotlightCard>

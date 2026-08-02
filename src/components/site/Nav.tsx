@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
+import { Link } from "@tanstack/react-router";
 import { AnimatePresence, motion } from "framer-motion";
 import { Magnetic, ScrollProgress } from "./motion";
+import { BOOKING_PATH } from "@/lib/calendly";
 
 const links = [
   { href: "#products", label: "Work" },
   { href: "#services", label: "Services" },
   { href: "#process", label: "Process" },
-  { href: "#team", label: "Team" },
-  { href: "#cases", label: "Case studies" },
+  { href: "#cases", label: "Outcomes" },
 ];
 
 export function Nav() {
@@ -33,11 +34,8 @@ export function Nav() {
         }`}
       >
         <nav className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4">
-          <a href="#top" className="group font-display text-lg font-semibold tracking-tight">
+          <a href="#top" className="font-display text-lg font-semibold tracking-tight">
             Olvix
-            <span className="text-primary transition-all duration-300 group-hover:tracking-widest">
-              AI
-            </span>
           </a>
 
           <div className="hidden items-center gap-7 md:flex">
@@ -47,9 +45,9 @@ export function Nav() {
               </a>
             ))}
             <Magnetic strength={0.25}>
-              <a href="#contact" className="btn-primary text-sm">
+              <Link to={BOOKING_PATH} className="btn-primary text-sm">
                 <span className="relative z-10">Book a call</span>
-              </a>
+              </Link>
             </Magnetic>
           </div>
 
@@ -87,13 +85,13 @@ export function Nav() {
                     {l.label}
                   </motion.a>
                 ))}
-                <a
-                  href="#contact"
+                <Link
+                  to={BOOKING_PATH}
                   onClick={() => setOpen(false)}
                   className="btn-primary justify-center text-center"
                 >
                   <span className="relative z-10">Book a call</span>
-                </a>
+                </Link>
               </div>
             </motion.div>
           ) : null}

@@ -400,3 +400,13 @@
     transition-duration: 0.001ms !important;
   }
 }
+
+.calendly-inline-widget {
+  overflow: hidden;
+}
+
+.calendly-inline-widget iframe {
+  display: block;
+  border: 0;
+  overflow: hidden;
+}

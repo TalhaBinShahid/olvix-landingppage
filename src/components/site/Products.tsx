@@ -1,10 +1,11 @@
 import { useRef } from "react";
+import { Link } from "@tanstack/react-router";
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { products } from "@/data/site";
 import { SectionHeading } from "./Reveal";
 import { SpotlightCard } from "./motion";
 
-function StackCard({ p, i, total }: { p: (typeof products)[number]; i: number; total: number }) {
+function StackCard({ p, i }: { p: (typeof products)[number]; i: number }) {
   const reduce = useReducedMotion();
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -46,9 +47,7 @@ function StackCard({ p, i, total }: { p: (typeof products)[number]; i: number; t
           <div className="grid gap-6 md:grid-cols-2 md:items-center">
             <div className={`media ${i % 2 === 1 ? "md:order-2" : ""}`}>{media}</div>
             <div>
-              <span className="tag-mono">
-                {String(i + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
-              </span>
+              <span className="tag-mono">{String(i + 1).padStart(2, "0")}</span>
               <h3 className="mt-4 text-xl font-semibold sm:text-2xl">{p.title}</h3>
               <p className="mt-3 text-sm text-muted-foreground sm:text-base">
                 {p.description}
@@ -63,10 +62,10 @@ function StackCard({ p, i, total }: { p: (typeof products)[number]; i: number; t
                   </span>
                 ))}
               </div>
-              <a href="#cases" className="link-arrow mt-6">
+              <Link to="/work/$slug" params={{ slug: p.slug }} className="link-arrow mt-6">
                 View case study
                 <span className="arrow">→</span>
-              </a>
+              </Link>
             </div>
           </div>
         </SpotlightCard>
@@ -79,14 +78,14 @@ export function Products() {
   return (
     <section id="products" className="section-shell">
       <SectionHeading
-        eyebrow="Products"
-        title="Five builds, shipped end to end."
-        subtitle="Placeholder demos below — real screenshots and case studies land as they're ready."
+        eyebrow="Our work"
+        title="What we have done for our clients."
+        subtitle="Production AI builds — from voice agents to ML platforms, shipped end to end."
       />
 
       <div className="flex flex-col gap-10 pb-24">
         {products.map((p, i) => (
-          <StackCard key={p.title} p={p} i={i} total={products.length} />
+          <StackCard key={p.slug} p={p} i={i} />
         ))}
       </div>
     </section>
